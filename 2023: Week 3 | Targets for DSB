@@ -42,7 +42,35 @@ WHERE [Transaction Code] LIKE '%DSB%'
 ;
 
 
+-- Task 2:
 
+SELECT [Transaction Code]
+      ,[Value]
+      ,[Customer Code]
+      , CASE
+			WHEN [Online or In-Person] = '1' THEN 'Online'
+			WHEN [Online or In-Person] = '2' THEN 'In-Person'
+			ELSE [Online or In-Person]
+			END AS "Online or In Person"
+      ,[Transaction Date]
+FROM [General].[Preppin Data | 2023, Week 3].[PD 2023 Wk 1 Input]
+WHERE [Transaction Code] LIKE '%DSB%'
+;
+
+
+-- Task 3:
+
+SELECT [Transaction Code]
+      ,[Value]
+      ,[Customer Code]
+      , CASE
+			WHEN [Online or In-Person] = '1' THEN 'Online'
+			WHEN [Online or In-Person] = '2' THEN 'In-Person'
+			ELSE [Online or In-Person]
+			END AS "Online or In Person"
+	  , DATEPART(quarter, CONVERT(DATETIME, [Transaction Date], 105)) AS Quarter
+FROM [General].[Preppin Data | 2023, Week 3].[PD 2023 Wk 1 Input]
+WHERE [Transaction Code] LIKE '%DSB%'
 
 
 
