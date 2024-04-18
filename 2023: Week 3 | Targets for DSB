@@ -34,6 +34,51 @@
 
 
 
+-- Task 1:
+
+SELECT *
+FROM [General].[Preppin Data | 2023, Week 3].[PD 2023 Wk 1 Input]
+WHERE [Transaction Code] LIKE '%DSB%'
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
