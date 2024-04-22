@@ -98,7 +98,7 @@ GROUP BY DATEPART(quarter, CONVERT(DATETIME, [Transaction Date] , 105)), [Online
 ;
 
 
--- Task 5:
+-- Task 5 & 6:
 
 SELECT [Online_or_In_Person]
 	, "Quarter"
@@ -113,6 +113,24 @@ SELECT [Online_or_In_Person]
 		) AS unpvt
 ;
 
+
+-- Task 7:
+
+SELECT [Online_or_In_Person]
+	, CONVERT(INTEGER, RIGHT("Quarter", 1)) AS Quarter
+	, "Quarterly Targets"
+  FROM 
+		(SELECT  *
+		FROM [General].[Preppin Data | 2023, Week 3].[Targets]) p
+  UNPIVOT
+		-- Value ↓	    Column Name ↓
+		("Quarterly Targets" FOR "Quarter" IN
+			([Q1], [Q2], [Q3], [Q4])
+		) AS unpvt
+;
+
+
+-- Task 8:
 
 
 
