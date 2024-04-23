@@ -25,11 +25,11 @@
 --   9) Remove unnecessary fields
 --   10) Calculate the Variance to Target for each row
 --   11) Output the data (5 fields:
---       Online or In-Person
---       Quarter
---       Value
---       Quarterly Targets
---       Variance to Target)
+--       - Online or In-Person
+--       - Quarter
+--       - Value
+--       - Quarterly Targets
+--       - Variance to Target)
 --       8 rows (9 including headers)
 
 
@@ -130,33 +130,72 @@ SELECT [Online_or_In_Person]
 ;
 
 
--- Task 8:
+-- Task 8 & 9:
+
+SELECT 
+    q1.[Online or In-Person],
+    q1.Quarter,
+    q1.Value,
+    q2.[Quarterly Targets],
+
+-- Task 10:
+
+    q1.Value - q2.[Quarterly Targets] AS "Variance to Target"
+FROM
+    (
+        -- Query 1
+        SELECT 
+            CASE
+                WHEN [Online or In-Person] = '1' THEN 'Online'
+                WHEN [Online or In-Person] = '2' THEN 'In-Person'
+                ELSE [Online or In-Person]
+            END AS "Online or In-Person",
+            DATEPART(quarter, CONVERT(DATETIME, [Transaction Date], 105)) AS Quarter,
+            SUM(CAST([Value] AS integer)) AS Value
+        FROM 
+            [General].[Preppin Data | 2023, Week 3].[PD 2023 Wk 1 Input]
+        WHERE 
+            [Transaction Code] LIKE '%DSB%'
+        GROUP BY 
+            DATEPART(quarter, CONVERT(DATETIME, [Transaction Date], 105)), 
+            [Online or In-Person]
+    ) AS q1
+
+JOIN
+
+    (
+        -- Query 2
+        SELECT 
+            [Online_or_In_Person],
+            CONVERT(INTEGER, RIGHT("Quarter", 1)) AS Quarter,
+            "Quarterly Targets"
+        FROM 
+            (
+                SELECT  *
+                FROM [General].[Preppin Data | 2023, Week 3].[Targets]
+            ) p
+        UNPIVOT
+            ("Quarterly Targets" FOR "Quarter" IN ([Q1], [Q2], [Q3], [Q4])) AS unpvt
+    ) AS q2
+
+ON 
+    q1.[Online or In-Person] = q2.[Online_or_In_Person]
+    AND q1.Quarter = q2.Quarter
+;
 
 
 
 
 
+-- 11) Output:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Online or In-Person	Quarter 	Value   	Quarterly Targets	Variance to Target
+Online			1		74562		72500			2062
+Online			2		69325		70000			-675
+Online			3		59072		60000			-928
+Online			4		61908		60000			1908
+In-Person		1		77576		75000			2576
+In-Person		2		70634		70000			634
+In-Person		3		74189		70000			4189
+In-Person		4		43223		60000			-16777
 
