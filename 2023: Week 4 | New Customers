@@ -9,19 +9,20 @@
 
 -- Requirements:
 -- 1) Input the data
--- 2) We want to stack the tables on top of one another, since they have the same fields in each sheet. We can do this one of 2 ways:
---   - Drag each table into the canvas and use a union step to stack them on top of one another
---   - Use a wildcard union in the input step of one of the tables
--- Some of the fields aren't matching up as we'd expect, due to differences in spelling. Merge these fields together
--- Make a Joining Date field based on the Joining Day, Table Names and the year 2023
--- Now we want to reshape our data so we have a field for each demographic, for each new customer
--- Make sure all the data types are correct for each field
--- Remove duplicates:
+-- 2) We want to stack the tables on top of one another, since they have the same fields in each sheet
+-- 3) Some of the fields aren't matching up as we'd expect, due to differences in spelling. Merge these fields together
+-- 4) Make a Joining Date field based on the Joining Day, Table Names and the year 2023
+-- 5) Now we want to reshape our data so we have a field for each demographic, for each new customer
+-- 6) Make sure all the data types are correct for each field
+-- 7) Remove duplicates:
 --   - If a customer appears multiple times take their earliest joining date
--- Output the data
-
-
-
+-- 8) Output the data (5 fields):
+--    ID
+--    Joining Date
+--    Account Type
+--    Date of Birth
+--    Ethnicity
+-- 989 rows (990 including headers)
 
 
 
