@@ -25,5 +25,48 @@
 -- 989 rows (990 including headers)
 
 
+-- 2)
+
+SELECT *
+INTO [General].[Preppin Data | 2023, Week 4].[New Customers Full Year]
+FROM 
+	(
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - January]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - February]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - March]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - April]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - May]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - June]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - July]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - August]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - September]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - October]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - November]
+	 UNION
+	 SELECT *
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - December]
+	) U
+
 
 
