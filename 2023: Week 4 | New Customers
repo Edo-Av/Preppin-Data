@@ -69,4 +69,27 @@ FROM
 	) U
 
 
+-- 3.1)
+
+EXEC sp_rename '[General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - October].[Demagraphic]', 'Demographic', 'COLUMN';
+
+
+-- 3.2 / 6)
+
+ALTER TABLE [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - January]
+ALTER COLUMN Joining_Day integer;
+
+
+-- 3.3) 
+
+DROP TABLE [General].[Preppin Data | 2023, Week 4].[New Customers Full Year]
+
+-- and then re-run the same query as point 2 above
+
+
+-- 4)
+
+
+
+
 
