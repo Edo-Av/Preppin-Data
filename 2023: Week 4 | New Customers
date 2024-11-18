@@ -89,6 +89,77 @@ DROP TABLE [General].[Preppin Data | 2023, Week 4].[New Customers Full Year]
 
 -- 4)
 
+WITH "Table with Months" AS
+
+(SELECT *
+	 , 1 AS Month
+	 , 2023 AS Year
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - January]
+	 UNION
+	 SELECT *
+	 , 2
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - February]
+	 UNION
+	 SELECT *
+	 , 3
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - March]
+	 UNION
+	 SELECT *
+	 , 4
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - April]
+	 UNION
+	 SELECT *
+	 , 5
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - May]
+	 UNION
+	 SELECT *
+	 , 6
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - June]
+	 UNION
+	 SELECT *
+	 , 7
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - July]
+	 UNION
+	 SELECT *
+	 , 8
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - August]
+	 UNION
+	 SELECT *
+	 , 9
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - September]
+	 UNION
+	 SELECT *
+	 , 10
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - October]
+	 UNION
+	 SELECT *
+	 , 11
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - November]
+	 UNION
+	 SELECT *
+	 , 12
+	 , 2023
+	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - December])
+
+SELECT 	   ID
+,	   CONCAT_WS('/', TRIM(STR(Joining_Day)), TRIM(STR(Month)), TRIM(STR(Year))) AS "Joining Date"
+,	   Demographic
+,	   Value
+
+FROM "Table with Months"
+ORDER BY Month
+	;
+
 
 
 
