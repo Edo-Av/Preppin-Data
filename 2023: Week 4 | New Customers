@@ -152,7 +152,7 @@ WITH "Table with Months" AS
 	 FROM [General].[Preppin Data | 2023, Week 4].[New Customers.xlsx - December])
 
 SELECT 	   ID
-,	   CONCAT_WS('/', TRIM(STR(Joining_Day)), TRIM(STR(Month)), TRIM(STR(Year))) AS "Joining Date"
+,	   CONCAT_WS('/', RIGHT(REPLICATE('0', 1) + TRIM(STR(Joining_Day)), 2), RIGHT(REPLICATE('0', 1) + TRIM(STR(Month)), 2), TRIM(STR(Year))) AS "Joining Date"
 ,	   Demographic
 ,	   Value
 
