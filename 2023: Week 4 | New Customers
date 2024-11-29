@@ -156,6 +156,7 @@ SELECT 	   ID
 ,	   Demographic
 ,	   Value
 
+INTO [Preppin Data | 2023, Week 4].[New Customers.xlsx - .Pre-Pivot]
 FROM "Table with Months"
 ORDER BY Month
 	;
