@@ -24,12 +24,24 @@ Requirements:
 
 4) Create two tables, one for Flow Card holders and one for non-Flow Card holders
 
+-----
 
 
 
+1.1) In order to split the Flight Details field, I first need to add a unique ID to the table:
+
+ALTER TABLE [Preppin Data | 2024, Week 1].[PD 2024 Wk 1 Input]
+ADD ID INT IDENTITY(1,1);
 
 
+1.2) Then add the columns that will receive the split values:
 
+ALTER TABLE [General].[Preppin Data | 2024, Week 1].[PD 2024 Wk 1 Input]
+ADD Date NVARCHAR(50), 
+    FlightNumber NVARCHAR(50),
+    CombinedCity NVARCHAR(100),
+    Class NVARCHAR(50),
+    Price NVARCHAR(50);
 
 
 
