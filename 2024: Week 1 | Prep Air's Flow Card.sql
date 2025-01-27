@@ -93,6 +93,7 @@ ADD FromCity NVARCHAR(50),
     ToCity NVARCHAR(50);
 
 
+
 -- 1.5) Split CombinedCity and the data to the new columns:
 
 UPDATE t1
@@ -111,7 +112,8 @@ DROP   COLUMN [Flight_Details]
       ,[CombinedCity];
 
 
--- 2)
+
+-- 2) Change data types:
 
 ALTER TABLE [General].[Preppin Data | 2024, Week 1].[PD 2024 Wk 1 Input]
 ALTER COLUMN [Date] DATE;
@@ -121,3 +123,37 @@ ALTER COLUMN [Price] DECIMAL(10, 1);
 
 
 
+-- 2.1) (change data types)
+
+ALTER TABLE [Preppin Data | 2024, Week 1].[PD 2024 Wk 1 Input]
+ALTER COLUMN [Flow_Card] NVARCHAR(3);
+
+
+
+-- 3) Change values to Yes and No
+
+UPDATE t1
+SET t1.Flow_Card = 
+	CASE
+			WHEN t1.Flow_Card = '1' THEN 'Yes'
+			WHEN t1.Flow_Card = '0' THEN 'No'
+			END
+FROM [Preppin Data | 2024, Week 1].[PD 2024 Wk 1 Input] t1;
+
+
+
+-- 4.1) 
+    
+SELECT *
+INTO [Preppin Data | 2024, Week 1].[PD 2024 Wk 1 Input - Flow Card holders]
+FROM [Preppin Data | 2024, Week 1].[PD 2024 Wk 1 Input]
+WHERE [Flow_Card] = 'Yes';
+
+
+
+-- 4.2) 
+    
+SELECT *
+INTO [Preppin Data | 2024, Week 1].[PD 2024 Wk 1 Input - Non-Flow Card holders]
+FROM [Preppin Data | 2024, Week 1].[PD 2024 Wk 1 Input]
+WHERE [Flow_Card] = ‘No’;
